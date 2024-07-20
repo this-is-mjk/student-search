@@ -1,0 +1,25 @@
+.outer-searchbar-box {
+  padding: 10px;
+  margin: 0 auto;
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  height: min(40px, 80vw);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.searchbar {
+  margin-left: 5px;
+  font-size: large;
+  border: none;
+  outline: none;
+  width: min(200px, 50vw);
+  background-color: transparent;
+}
+.filter-button {
+  font-size: medium;
+}
