@@ -4,7 +4,6 @@ import "./intro.css";
 export default function Intro() {
   return (
     <div className="intro">
-      <h1 className="green-heading">Hello Y24s!</h1>
       <TypeAnimation
         sequence={[
           // Same substring at the start will only be typed out once, initially

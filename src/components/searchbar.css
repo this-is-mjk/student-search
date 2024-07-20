@@ -22,4 +22,30 @@
 }
 .filter-button {
   font-size: medium;
+  padding: 4px;
+  box-shadow: rgba(255, 255, 255, 0.4) 2px 2px;
+}
+.filter-menu {
+  width: min(260px, 60vw);
+  background-color: transparent;
+  border: px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.selected {
+  background-color: rgba(11, 156, 49, 0.9);
+}
+.menu-button {
+  width: 100%;
+  display: block;
+  padding: 4px;
+  border-radius: 5px;
+  margin: 0 auto;
+  border: 0.5px solid #fff;
+}
+.filter-menu > p {
+  margin: 5px auto;
+  font-size: medium;
+  font-weight: 100;
+  font-style: italic;
 }

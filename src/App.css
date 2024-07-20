@@ -1,6 +1,8 @@
 .App {
-  align-items: start;
-  margin: 8vh 25vw;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -36,4 +38,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.green-heading {
+  font-size: 2.5rem;
+  color: green;
+  width: fit-content;
 }
