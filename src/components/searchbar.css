@@ -23,7 +23,6 @@
 .filter-button {
   font-size: medium;
   padding: 4px;
-  box-shadow: rgba(255, 255, 255, 0.4) 2px 2px;
 }
 .filter-menu {
   width: min(260px, 60vw);
