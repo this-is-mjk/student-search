@@ -3,6 +3,8 @@ import Intro from "./components/intro";
 import SearchBar from "./components/searchbar";
 import SearchPage from "./components/SearchPage";
 import { useEffect, useState } from "react";
+import { db } from "./utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 
 export default function App() {
@@ -11,90 +13,36 @@ export default function App() {
   const [filteredData, setFilteredData] = useState([]);
 
   // fetch data from API
-
-  const [students, setStudents] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      rollNumber: "2301001",
-      gender: "Male",
-      department: "CSE",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      rollNumber: "2301002",
-      gender: "Female",
-      department: "EE",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 3,
-      name: "Alex Johnson",
-      rollNumber: "2301003",
-      gender: "Male",
-      department: "MTH",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 4,
-      name: "Emily Davis",
-      rollNumber: "2301004",
-      gender: "Female",
-      department: "CE",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 5,
-      name: "Michael Brown",
-      rollNumber: "2301005",
-      gender: "Male",
-      department: "CHE",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 6,
-      name: "Sarah Wilson",
-      rollNumber: "2301006",
-      gender: "Female",
-      department: "ECO",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 7,
-      name: "David Thompson",
-      rollNumber: "2301007",
-      gender: "Male",
-      department: "MECH",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 8,
-      name: "Jessica Anderson",
-      rollNumber: "2301008",
-      gender: "Female",
-      department: "ES",
-      image: "/placeholder-user.jpg",
-    },
-    {
-      id: 9,
-      name: "Christopher Martinez",
-      rollNumber: "2301009",
-      gender: "Male",
-      department: "SDS",
-      image: "/placeholder-user.jpg",
-    },
-  ]);
-
-  useEffect(() => {
-    handleSearch(searchTerm);
-  }, [searchTerm]);
+  const [students,setStudents] = useState([]);
+  const fetchData = async()=>{
+    if (sessionStorage.getItem('students')){
+      console.log("session")
+      const data = JSON.parse(sessionStorage.getItem('students'));
+      setStudents(data)
+        
+    } else {
+      console.log("firebase")
+      await getDocs(collection(db, "students"))
+    .then((querySnapshot)=>{               
+        const newData = querySnapshot.docs
+            .map((doc) => ({...doc.data(), id:doc.id }));
+            setStudents(newData)   
+            sessionStorage.setItem('students', JSON.stringify(newData));
+          })        
+    }
+   
+  }
+  useEffect(()=>{
+    fetchData()
+  },[])
+  useEffect(()=>{
+      handleSearch(searchTerm);
+}, [searchTerm, students])
 
   const handleSearch = (searchTerm) => {
     const filtered = students.filter((student) => {
       const nameMatch = student.name.toLowerCase().includes(searchTerm?.text.toLowerCase())
-      const rollNumberMatch = student.rollNumber.includes(searchTerm?.text)
+      const rollNumberMatch = student.rollNumber.toString().includes(searchTerm?.text);
       const genderMatch = searchTerm?.gender.length > 0 ? searchTerm?.gender.includes(student.gender) : true
       const departmentMatch = searchTerm?.department.length > 0 ? searchTerm?.department.includes(student.department) : true
       console.log(nameMatch, rollNumberMatch, genderMatch, departmentMatch)
@@ -104,11 +52,16 @@ export default function App() {
   };
   
   return (
-    <div className="App">
-       <h1 className="green-heading">Hello Y24s!</h1>
-      <Intro />
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}  />
-      <SearchPage students={filteredData}/>
-    </div>
+    
+      <div className="App">
+        <h1 className="green-heading">Hello Y24s!</h1>
+        <Intro />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
+      <div>Loading...</div>
+    )}
+       
+      </div>
+   
   );
 }
