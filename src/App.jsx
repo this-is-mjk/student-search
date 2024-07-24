@@ -1,7 +1,7 @@
 import "./App.css";
 import Intro from "./components/intro";
 import SearchBar from "./components/searchbar";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./components/SearchPage";
 import { useEffect, useState } from "react";
 
 
