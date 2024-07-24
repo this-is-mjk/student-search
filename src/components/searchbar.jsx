@@ -56,7 +56,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
             </button>
           ))}
           <p>Branch</p>
-          {['CSE', 'EE', 'MTH', 'CE', 'CHE', 'ECO', 'ME', 'PHY', 'BSBE'].map(branch => (
+          {['Chemistry', 'Electrical Engineering', 'Materials Science and Engineering', 'Chemical Engineering', 'Mechanical Engineering', 'Economics', 'Civil Engineering', 'Physics', 'Computer Science and Engineering', 'Mathematics and Statistics', 'Biological Sciences and Bioengineering', 'Aerospace Engineering', 'Earth Science', 'Statistics and Data Science'].map(branch => (
             <button
               key={branch}
               className={selectedBranch.includes(branch) ? 'selected menu-button' : 'not-selected menu-button'}
