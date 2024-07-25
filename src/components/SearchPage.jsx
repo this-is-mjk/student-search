@@ -9,12 +9,12 @@ import Card from "@/components/student-card"
 import { useState, useMemo } from "react"
 
 export default function SearchPage({students}) {
-  console.log(students)
+  students.sort((a, b) => a.rollNumber - b.rollNumber)
   return (
     <div className="flex flex-col min-h-screen bg-background border-none">
       <main className="flex-1 py-12">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 animate-fade-in">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 animate-fade-in ">
           {students.map((student) => (
               <div key={student.id} className="grid-item">
                 <Card user={student} />

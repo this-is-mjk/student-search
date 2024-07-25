@@ -1,6 +1,12 @@
 import { FaSearch, FaFilter } from "react-icons/fa";
 import { IconButton } from "rsuite";
 import { useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverAnchor
+} from "@/components/ui/popover"
 import "./searchbar.css";
 
 export default function SearchBar({ searchTerm, setSearchTerm }) {
@@ -28,7 +34,8 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
   return (
     <>
       <label>
-        <div className="outer-searchbar-box">
+      <Popover>
+        <PopoverAnchor className="outer-searchbar-box">
           <FaSearch style={{ color: "white" }} />
           <input
             className="searchbar"
@@ -36,37 +43,46 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
             placeholder="Search"
             onChange={handleInputChange}
           />
-          <IconButton
-            className="filter-button"
-            onClick={() => setDropdown(!dropdown)}
-            icon={<FaFilter />}
-          />
-        </div>
-      </label>
-      {dropdown && (
-        <div id="filter-menu" className="filter-menu">
-          <p>Gender</p>
-          {['Male', 'Female', 'Other'].map(gender => (
-            <button
-              key={gender}
-              className={selectedGender.includes(gender) ? 'selected menu-button' : 'not-selected menu-button'}
-              onClick={() => toggleSelection(gender, 'gender')}
-            >
-              {gender}
-            </button>
-          ))}
-          <p>Branch</p>
-          {['Chemistry', 'Electrical Engineering', 'Materials Science and Engineering', 'Chemical Engineering', 'Mechanical Engineering', 'Economics', 'Civil Engineering', 'Physics', 'Computer Science and Engineering', 'Mathematics and Statistics', 'Biological Sciences and Bioengineering', 'Aerospace Engineering', 'Earth Science', 'Statistics and Data Science'].map(branch => (
-            <button
-              key={branch}
-              className={selectedBranch.includes(branch) ? 'selected menu-button' : 'not-selected menu-button'}
-              onClick={() => toggleSelection(branch, 'department')}
-            >
-              {branch}
-            </button>
-          ))}
-        </div>
-      )}
+            <PopoverTrigger>
+              <IconButton
+                className="filter-button"
+                onClick={() => setDropdown(!dropdown)}
+                icon={<FaFilter />}
+              />
+            </PopoverTrigger>
+            <PopoverContent className="w-[40vw] min-w-[300px]">
+              <div className="overflow">
+                <p>Gender</p>
+                <div className="buttonContainer">
+                  {['Male', 'Female', 'Other'].map(gender => (
+                    <button
+                      key={gender}
+                      className={selectedGender.includes(gender) ? 'selected menu-button' : 'not-selected menu-button'}
+                      onClick={() => toggleSelection(gender, 'gender')}
+                    >
+                      {gender}
+                    </button>
+                  ))}
+                  </div>
+                  <p>Branch</p>
+                  <div className="buttonContainer branch">
+                  {['Chemistry', 'Electrical Engineering', 'Materials Science and Engineering', 'Chemical Engineering', 'Mechanical Engineering', 'Economics', 'Civil Engineering', 'Physics', 'Computer Science and Engineering', 'Mathematics and Statistics', 'Biological Sciences and Bioengineering', 'Aerospace Engineering', 'Earth Science', 'Statistics and Data Science'].map(branch => (
+                    <button
+                      key={branch}
+                      className={selectedBranch.includes(branch) ? 'selected menu-button branch-button' : 'not-selected menu-button branch-button'}
+                      onClick={() => toggleSelection(branch, 'department')}
+                    >
+                      {branch}
+                    </button>
+              ))}
+
+                  </div>
+                  
+            </div>
+            </PopoverContent>
+        </PopoverAnchor>
+        </Popover>
+        </label>
     </>
   );
 }
