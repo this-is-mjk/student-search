@@ -10,6 +10,7 @@ import { useState, useMemo } from "react"
 
 export default function SearchPage({students}) {
   students.sort((a, b) => a.rollNumber - b.rollNumber)
+
   return (
     <div className="flex flex-col min-h-screen bg-background border-none">
       <main className="flex-1 py-12">
