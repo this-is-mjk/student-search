@@ -3,7 +3,7 @@ import Intro from "./components/intro";
 import SearchBar from "./components/searchbar";
 import SearchPage from "./components/SearchPage";
 import { useEffect, useState } from "react";
-import { supabase } from "./utils/supabase";
+import { createClient } from "@supabase/supabase-js";
 
 
 
@@ -15,7 +15,10 @@ export default function App() {
   // fetch data from API
   const [students,setStudents] = useState([]);
   const fetchDataFromDB = async () => {
-    const { data } = await supabase.from('students').select('*').limit(1200);
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const { data } = await supabase.from('students').select('*').limit(1300);
     console.log( data)
     setStudents(data)
   }
