@@ -14,30 +14,30 @@ export default function App() {
 
   // fetch data from API
   const [students,setStudents] = useState([]);
-  const fetchData = async()=>{
-    if (sessionStorage.getItem('students')){
-      console.log("session")
-      const data = JSON.parse(sessionStorage.getItem('students'));
-      setStudents(data)
+//   const fetchData = async()=>{
+//     if (sessionStorage.getItem('students')){
+//       console.log("session")
+//       const data = JSON.parse(sessionStorage.getItem('students'));
+//       setStudents(data)
         
-    } else {
-      console.log("firebase")
-      await getDocs(collection(db, "students"))
-    .then((querySnapshot)=>{               
-        const newData = querySnapshot.docs
-            .map((doc) => ({...doc.data(), id:doc.id }));
-            setStudents(newData)   
-            sessionStorage.setItem('students', JSON.stringify(newData));
-          })        
-    }
+//     } else {
+//       console.log("firebase")
+//       await getDocs(collection(db, "students"))
+//     .then((querySnapshot)=>{               
+//         const newData = querySnapshot.docs
+//             .map((doc) => ({...doc.data(), id:doc.id }));
+//             setStudents(newData)   
+//             sessionStorage.setItem('students', JSON.stringify(newData));
+//           })        
+//     }
    
-  }
-  useEffect(()=>{
-    fetchData()
-  },[])
-  useEffect(()=>{
-      handleSearch(searchTerm);
-}, [searchTerm, students])
+//   }
+//   useEffect(()=>{
+//     fetchData()
+//   },[])
+//   useEffect(()=>{
+//       handleSearch(searchTerm);
+// }, [searchTerm, students])
 
   const handleSearch = (searchTerm) => {
     const filtered = students.filter((student) => {
@@ -55,11 +55,12 @@ export default function App() {
     
       <div className="App">
         <h1 className="green-heading">Hello Y24s!</h1>
-        <Intro />
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
+        {/* <Intro /> */}
+        {/* <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
+        {/* {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
       <div>Loading...</div>
-    )}
+    )} */}
+      <div>Under Maintenance, See You Soon.</div>
        
       </div>
    
