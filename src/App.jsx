@@ -57,7 +57,7 @@ export default function App() {
         <h1 className="green-heading">Hello Y24s!</h1>
         {/* <Intro /> */}
         {/* <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
-        {/* {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
+        {/* {students.length !== 0 ? ( <SearchPage  students={filteredData} /> ) : (
       <div>Loading...</div> 
     )} */}
       <div>Under Maintenance, See You Soon.</div>
