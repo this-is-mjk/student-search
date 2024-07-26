@@ -58,7 +58,7 @@ export default function App() {
         {/* <Intro /> */}
         {/* <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
         {/* {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
-      <div>Loading...</div>
+      <div>Loading...</div> 
     )} */}
       <div>Under Maintenance, See You Soon.</div>
        
