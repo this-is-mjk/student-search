@@ -9,7 +9,21 @@ import Card from "@/components/student-card"
 import { useState, useMemo } from "react"
 
 export default function SearchPage({students}) {
-  students.sort((a, b) => a.rollNumber - b.rollNumber)
+  students.sort((a, b) => {
+    const hasImageA = a.image ? 1 : 0;
+    const hasImageB = b.image ? 1 : 0;
+    return hasImageB - hasImageA;
+  });
+  
+  let count = 0;
+
+students.forEach((student) => {
+  if (student.image) {
+    count++;
+  }
+});
+
+console.log(`Number of students with images: ${count}`);
 
   return (
     <div className="flex flex-col min-h-screen bg-background border-none">

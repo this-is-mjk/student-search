@@ -4,6 +4,9 @@ import SearchBar from "./components/searchbar";
 import SearchPage from "./components/SearchPage";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./utils/firebase";
+import { supabase } from "./utils/supabase";
 
 
 
@@ -37,9 +40,19 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
     // .then((querySnapshot)=>{               
     //     const newData = querySnapshot.docs
     //         .map((doc) => ({...doc.data(), id:doc.id }));
-    //         setStudents(newData)   
-    //         sessionStorage.setItem('students', JSON.stringify(newData));
-    //       })        
+    //         setStudents(newData)
+    //         console.log(typeof newData)
+    //         newData.forEach((student)=>{
+    //           supabase.from("students").update("image",student.image).eq('rollno',student.rollno)
+    //           // .then(()=>{
+    //           //   console.log("Updated ",student.rollno)
+    //           // })
+    //           // .catch(()=>{
+    //           //   console.log("error")
+    //           // })
+    //         })   
+            // sessionStorage.setItem('students', JSON.stringify(newData));
+          // })        
     }
    
   }

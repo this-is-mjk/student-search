@@ -2,6 +2,7 @@ import Webcam from "react-webcam";
 import { useCallback, useRef, useState } from "react";
 import { storage, ref, uploadString, getDownloadURL, db } from "@/utils/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+import { supabase } from "@/utils/supabase";
 
 const CustomWebcam = ({user, setOpen}) => {
     const webcamRef = useRef(null)
@@ -17,7 +18,7 @@ const CustomWebcam = ({user, setOpen}) => {
     }
 
     const upload = async () => {
-        var name = user.rollNumber
+        var name = user.rollno
         var storageRef = ref(storage, `/images/${name}`)
 
 
@@ -26,12 +27,13 @@ const CustomWebcam = ({user, setOpen}) => {
             getDownloadURL(snapshot.ref).then(async (downloadURL) => {
                 console.log("image available at ", downloadURL)
                 user.image = downloadURL
-                await updateDoc(doc(db, "students", user.id), {
-                    image: downloadURL
-                })                
+                // await updateDoc(doc(db, "students", user.id), {
+                //     image: downloadURL
+                // })
+                await supabase.from("students").update({image: downloadURL}).eq('rollno', user.rollno)                
                 const students = JSON.parse(sessionStorage.getItem("students"))
                 students.forEach((student) => {
-                    if(student.rollNumber === user.rollNumber){
+                    if(student.rollno === user.rollno){
                         student.image = downloadURL
                     }
                 })
