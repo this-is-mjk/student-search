@@ -14,11 +14,13 @@ export default function Intro() {
           "Want to search your juniors?",
           1000,
         ]}
-        wrapper="span"
+        wrapper="div"
         speed={50}
         style={{
           fontSize: "2em",
           alignItems: "start",
+          textWrap: "nowrap",
+          textAlign: "center"
         }}
         repeat={Infinity}
       />
