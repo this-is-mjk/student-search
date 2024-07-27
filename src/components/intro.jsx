@@ -5,7 +5,7 @@ export default function Intro() {
   return (
     <div className="intro">
       <TypeAnimation
-        className=" lg:text-2xl text-xl"
+        className=" lg:text-2xl text-lg"
         sequence={[
           // Same substring at the start will only be typed out once, initially
           "Looking to connect with your batchmates?",
