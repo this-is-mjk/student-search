@@ -60,7 +60,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                   {['Male', 'Female'].map(gender => (
                     <button
                       key={gender}
-                      className={selectedGender.includes(gender) ? 'selected menu-button text-3xl' : 'not-selected menu-button text-xl'}
+                      className={selectedGender.includes(gender) ? 'selected menu-button text-xl' : 'not-selected menu-button text-xl'}
                       onClick={() => toggleSelection(gender, 'gender')}
                     >
                       {gender}
