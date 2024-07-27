@@ -5,13 +5,14 @@ export default function Intro() {
   return (
     <div className="intro">
       <TypeAnimation
+        className=" lg:text-2xl text-xl"
         sequence={[
           // Same substring at the start will only be typed out once, initially
           "Looking to connect with your batchmates?",
           1000, // wait 1s before replacing the text
           "Need to get in touch with them?",
           1000,
-          "Introducing Student Search Y24 Exclusive: Your Gateway to Connection",
+          "Introducing Y24 Student Search",
           1000,
         ]}
         wrapper="div"
@@ -19,7 +20,7 @@ export default function Intro() {
         style={{
           fontFamily:"serif",
           fontWeight: 200,
-          fontSize: "2em",
+          // fontSize: "1.5em",
           alignItems: "start",
           textWrap: "nowrap",
           textAlign: "center",
