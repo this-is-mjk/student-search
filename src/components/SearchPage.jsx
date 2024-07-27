@@ -9,6 +9,7 @@ import Card from "@/components/student-card"
 import { useState, useMemo } from "react"
 
 export default function SearchPage({students}) {
+  students.sort((a,b)=> a.rollno - b.rollno)
   students.sort((a, b) => {
     const hasImageA = a.image ? 1 : 0;
     const hasImageB = b.image ? 1 : 0;
