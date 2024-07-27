@@ -18,9 +18,9 @@ export default function App() {
   // fetch data from API
   const [students,setStudents] = useState([]);
   const fetchDataFromDB = async () => {
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+// const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+//   const supabase = createClient(supabaseUrl, supabaseAnonKey);
     const { data } = await supabase.from('students').select('*').limit(1300);
     console.log( data)
     setStudents(data)
