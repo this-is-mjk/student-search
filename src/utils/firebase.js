@@ -24,6 +24,15 @@ const firebaseConfig2 = {
   messagingSenderId: "1031856181143",
   appId: "1:1031856181143:web:8defab90eca00212b1bed2"
 };
+
+const firebaseConfig3 = {
+  apiKey: "AIzaSyCjbMFQQDeIEDGuByU8E7m4SfMNF2pSR44",
+  authDomain: "student-search-3.firebaseapp.com",
+  projectId: "student-search-3",
+  storageBucket: "student-search-3.appspot.com",
+  messagingSenderId: "321924642294",
+  appId: "1:321924642294:web:86db44e9d908f100c083d7"
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig2);
 const db = getFirestore(app)
