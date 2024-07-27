@@ -28,7 +28,7 @@ export default function SearchPage({students}) {
           </div>
         </div>
       </main>
-      <footer className=" py-6 shadow-sm animate-fade-in">
+      <footer className=" py-6 shadow-sm animate-fade-in text-center font-thin ">
           <p className="text-muted-foreground text-sm">&copy; 2024 <a style={{fontStyle: "italic"}} href="https://pclub.in/">Programming Club</a>. All rights reserved.</p>
           <p className="text-muted-foreground text-sm">Search Your seniors <a style={{fontStyle: "italic"}} href="https://search.pclub.in/">here</a> </p>
 

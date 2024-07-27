@@ -28,10 +28,13 @@
   background-color: rgba(11, 156, 49, 0.9);
 }
 .menu-button {
-  width: 100%;
+  font-weight: 200;
+  padding: 10px;
+  width: 45%;
+  height: 70px;
   display: block;
   padding: 4px;
-  border-radius: 999999999px;
+  border-radius: 10px;
   margin: 0 auto;
   border: 0.5px solid #fff;
 }

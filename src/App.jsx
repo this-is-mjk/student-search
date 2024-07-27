@@ -56,7 +56,7 @@ const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
     const filtered = students.filter((student) => {
       const nameMatch = student.name.toLowerCase().includes(searchTerm?.text.toLowerCase())
       const rollNumberMatch = student.rollno.toString().includes(searchTerm?.text);
-      const genderMatch = searchTerm?.gender.length > 0 ? searchTerm?.gender.includes(student.gender) : true
+      const genderMatch = searchTerm?.gender.length > 0 ? (searchTerm?.gender[0] === "Male" && student.hall==="HALL13" || searchTerm?.gender[0] === "Female" && student.hall==="HALL4") : true
       const departmentMatch = searchTerm?.department.length > 0 ? searchTerm?.department.includes(student.department) : true
       return (nameMatch || rollNumberMatch) &&  genderMatch && departmentMatch
     });
@@ -66,7 +66,7 @@ const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
   return (
     
       <div className="App">
-        <h1 className="green-heading">Hello Y24s!</h1>
+        <h1 className="green-heading font-serif font-bold">Hello Y24s!</h1>
         <Intro />
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         {students.length !== 0 ? ( <SearchPage students={filteredData} /> ) : (
