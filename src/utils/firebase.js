@@ -16,9 +16,16 @@ const firebaseConfig = {
   appId: "1:383149599410:web:8cd2ac9581639f191837ab",
   measurementId: "G-QNT18BEJCB"
 };
-
+const firebaseConfig2 = {
+  apiKey: "AIzaSyCs9JJS5wIF4Z1D8uMCVL2CL6D-K7gmR00",
+  authDomain: "student-search-2.firebaseapp.com",
+  projectId: "student-search-2",
+  storageBucket: "student-search-2.appspot.com",
+  messagingSenderId: "1031856181143",
+  appId: "1:1031856181143:web:8defab90eca00212b1bed2"
+};
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig2);
 const db = getFirestore(app)
 const storage = getStorage();
 // const analytics = getAnalytics(app);s
