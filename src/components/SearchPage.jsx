@@ -10,12 +10,12 @@ import { useState, useMemo } from "react"
 
 export default function SearchPage({students}) {
   students.sort((a,b)=> a.rollno - b.rollno)
-  students.sort((a, b) => {
-    const hasImageA = a.image ? 1 : 0;
-    const hasImageB = b.image ? 1 : 0;
+  // students.sort((a, b) => {
+  //   const hasImageA = a.image ? 1 : 0;
+  //   const hasImageB = b.image ? 1 : 0;
 
-    return hasImageB - hasImageA;
-  });
+  //   return hasImageB - hasImageA;
+  // });
   return (
     <div className="flex flex-col min-h-screen bg-background border-none">
       <main className="flex-1 py-12">
