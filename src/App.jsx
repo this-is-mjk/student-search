@@ -60,7 +60,7 @@ export default function App() {
         {/* {students.length !== 0 ? ( <SearchPage  students={filteredData} /> ) : (
       <div>Loading...</div> 
     )} */}
-      <div>Under Maintenance, See You Soon.</div>
+      <div>See You Soon On Official <a style={{fontStyle: "italic", textDecoration: "underline"}} href="https://search.pclub.in">Student Search</a></div>
        
       </div>
    
